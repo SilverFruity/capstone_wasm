@@ -8,8 +8,10 @@
       <script type="text/javascript" src="build/capstone_js.js"></script>
       <script>
 
-        Module.onRuntimeInitialized = function()
-        {
+        Module.onRuntimeInitialized = function() {
+            console.log(Module._add(1,2));
+            console.log(Module._sub(2,1));
+
             CS_ARCH_X86 = 3;
             CS_ARCH_ARM = 0;
             CS_ARCH_AARCH64 = 1;
@@ -18,8 +20,6 @@
             CS_MODE_ARM = 0;
             CS_MODE_32 = 4;
 
-            console.log(Module._add(1,2));
-            console.log(Module._sub(2,1));
             var funcPtr = Module.addFunction(function(instruction, error) {
                 console.log(UTF8ToString(instruction));
             }, 'vii');
