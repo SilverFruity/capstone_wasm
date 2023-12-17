@@ -21,12 +21,18 @@
             CS_MODE_32 = 4;
 
             var funcPtr = Module.addFunction(function(instruction, error) {
+              if (instruction != 0) {
                 console.log(UTF8ToString(instruction));
+              }
+              if (error != 0) {
+                console.log(UTF8ToString(error));
+              }
             }, 'vii');
-            var buffer = [0x55, 0x48, 0x8b, 0x05, 0xb8, 0x13, 0x00, 0x00]
+
+            var buffer = [0xff,0x03,0x01,0xd1,0xfd,0x7b,0x03,0xa9]
             var buffer_ptr = Module._malloc(buffer.length);
             Module.writeArrayToMemory(buffer, buffer_ptr);
-            Module._disassemble(0x10, buffer_ptr, buffer.length, CS_ARCH_X86, CS_MODE_64, funcPtr);
+            Module._disassemble(0x10, buffer_ptr, buffer.length, CS_ARCH_AARCH64, CS_MODE_ARM, funcPtr);
             Module._free(buffer_ptr);
         };
       </script>
