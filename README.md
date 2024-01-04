@@ -45,6 +45,7 @@ cmake version 3.27.1
 emcc 3.1.51
 
 ```shell
+git submodule update
 source "~/emsdk/emsdk_env.sh"
 mkdir build && cd build
 emcmake cmake ..

@@ -12,7 +12,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC capstone)
 # set(CMAKE_EXECUTABLE_SUFFIX ".wasm")
 
 # -Os to reduce size
-set_target_properties(capstone_js PROPERTIES LINK_FLAGS "-Os -s EXPORTED_RUNTIME_METHODS=addFunction,removeFunction,writeArrayToMemory -s EXPORTED_FUNCTIONS=_malloc,_free -s ALLOW_MEMORY_GROWTH=1 -s RESERVED_FUNCTION_POINTERS=10")
+set_target_properties(capstone_js PROPERTIES LINK_FLAGS "-s WASM_BIGINT -s WASM=1 --no-entry -Os -s STANDALONE_WASM -s EXPORTED_RUNTIME_METHODS=addFunction,removeFunction,writeArrayToMemory -s EXPORTED_FUNCTIONS=_malloc,_free -s ALLOW_MEMORY_GROWTH=1 -s RESERVED_FUNCTION_POINTERS=10")
 # for dev
 # set_target_properties(capstone_js PROPERTIES LINK_FLAGS " -s EXPORTED_RUNTIME_METHODS=addFunction,removeFunction,writeArrayToMemory -s EXPORTED_FUNCTIONS=_malloc,_free -s ALLOW_MEMORY_GROWTH=1 -s RESERVED_FUNCTION_POINTERS=10")
 
